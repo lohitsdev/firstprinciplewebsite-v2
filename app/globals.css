@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background: #fbfaf7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    linear-gradient(90deg, rgba(23, 33, 31, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(23, 33, 31, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #fbfaf7 0%, #f5f7f4 48%, #fbfaf7 100%);
+  background-size: 72px 72px, 72px 72px, auto;
+  color: #17211f;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(15, 143, 130, 0.18);
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.heading {
+  font-family: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(110deg, transparent 0 18%, rgba(15, 143, 130, 0.12) 18% 18.12%, transparent 18.12% 100%),
+    linear-gradient(110deg, transparent 0 62%, rgba(185, 139, 75, 0.16) 62% 62.12%, transparent 62.12% 100%);
+  opacity: 0.9;
+}
+
+.reveal {
+  animation: reveal-up both;
+  animation-duration: 760ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation-timeline: view();
+    animation-range: entry 0% cover 32%;
+  }
+}
+
+.scroll-panel {
+  min-height: 44vh;
+}
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  min-width: max-content;
+  gap: 3rem;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track span {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
