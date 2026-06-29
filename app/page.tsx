@@ -11,20 +11,64 @@ const metrics = [
 
 const services = [
   {
-    title: "Venture Strategy",
-    text: "We sharpen the market, customer, business model, and execution logic before teams commit serious capital."
+    title: "AI Development",
+    items: [
+      "AI Agents",
+      "AI Chatbots",
+      "AI Workflow Automation",
+      "Enterprise AI Solutions",
+      "Voice AI",
+      "RAG & Knowledge Systems",
+      "AI Consulting"
+    ]
   },
   {
-    title: "Product Formation",
-    text: "We turn early conviction into positioning, user journeys, MVP scope, product architecture, and launch plans."
+    title: "Software Development",
+    items: [
+      "Custom Software Development",
+      "SaaS Development",
+      "Enterprise Software",
+      "Internal Business Tools",
+      "CRM & ERP Development",
+      "API Development & Integration",
+      "Legacy System Modernization"
+    ]
   },
   {
-    title: "Build Sprints",
-    text: "We help teams ship credible prototypes and lean products that answer the right commercial questions."
+    title: "Product Development",
+    items: [
+      "MVP Development",
+      "Product Strategy",
+      "UI/UX Design",
+      "Product Discovery Workshops",
+      "Rapid Prototyping",
+      "Product Scaling",
+      "Fractional CTO"
+    ]
   },
   {
-    title: "Growth Systems",
-    text: "We design acquisition, retention, pricing, and operating loops that make promising ventures compound."
+    title: "Data & Cloud",
+    items: [
+      "Data Engineering",
+      "Business Intelligence & Dashboards",
+      "Data Warehousing",
+      "Cloud Infrastructure",
+      "DevOps & CI/CD",
+      "System Integrations",
+      "Cloud Migration"
+    ]
+  },
+  {
+    title: "Digital Experiences",
+    items: [
+      "Web Application Development",
+      "Mobile App Development",
+      "E-commerce Development",
+      "Customer Portals",
+      "Admin Dashboards",
+      "Marketplace Platforms",
+      "Maintenance & Support"
+    ]
   }
 ];
 
@@ -148,20 +192,27 @@ export default function Home() {
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.22em] text-teal">Services</p>
               <h2 className="heading mt-4 text-4xl font-extrabold text-ink sm:text-5xl">
-                Senior help across the venture arc.
+                Senior help across the build arc.
               </h2>
             </div>
             <p className="max-w-md text-base leading-7 text-muted">
-              Focused enough for early ventures. Serious enough for established companies creating new business lines.
+              Focused enough for early ventures. Serious enough for established companies building AI, software, data, and digital platforms.
             </p>
           </div>
 
-          <div className="mt-14 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
+          <div className="mt-14 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <article key={service.title} className="reveal bg-paper p-7 sm:p-9" style={{ animationDelay: `${index * 70}ms` }}>
                 <p className="heading text-sm font-extrabold text-teal">0{index + 1}</p>
                 <h3 className="heading mt-8 text-3xl font-extrabold text-ink">{service.title}</h3>
-                <p className="mt-4 text-lg leading-8 text-muted">{service.text}</p>
+                <ul className="mt-6 space-y-3 text-base font-semibold leading-7 text-muted">
+                  {service.items.map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
