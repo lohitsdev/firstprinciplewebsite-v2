@@ -388,100 +388,217 @@
     }
 
     .services-section {
-      display: grid;
-      width: min(1560px, 132vw);
-      grid-template-rows: auto 1fr;
-      gap: 34px;
-      align-content: center;
+      display: flex;
+      width: max-content;
+      min-width: 100vw;
+      align-items: stretch;
       border-left: 1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(215, 255, 63, 0.035), transparent 38%),
+        radial-gradient(circle at 18% 18%, rgba(215, 255, 63, 0.1), transparent 28rem),
+        linear-gradient(90deg, rgba(215, 255, 63, 0.035), transparent 32%),
         #0b0d0b;
-      padding: 112px 48px 66px;
     }
 
-    .services-head {
+    .services-intro {
+      display: flex;
+      width: 48vw;
+      min-width: 560px;
+      max-width: 700px;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--line);
+      padding: 92px clamp(38px, 5vw, 82px);
+    }
+
+    .services-intro h2 {
+      margin-top: 24px;
+      font-family: var(--serif);
+      font-size: clamp(58px, 6.4vw, 106px);
+      font-weight: 400;
+      line-height: 0.92;
+    }
+
+    .services-intro p:not(.kicker) {
+      max-width: 520px;
+      margin-top: 28px;
+      color: var(--soft);
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .services-orbit {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 44px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .services-orbit span {
+      min-height: 92px;
       display: flex;
       align-items: end;
-      justify-content: space-between;
-      gap: 48px;
+      background: rgba(255, 255, 255, 0.025);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      line-height: 1.45;
+      padding: 16px;
+      text-transform: uppercase;
     }
 
-    .services-head h2 {
-      max-width: 740px;
-      font-family: var(--serif);
-      font-size: clamp(50px, 5.4vw, 88px);
-      font-weight: 400;
-      line-height: 0.96;
-    }
-
-    .services-head p:not(.kicker) {
-      max-width: 430px;
-      color: var(--soft);
-      font-size: 17px;
-      font-weight: 300;
-      line-height: 1.55;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(220px, 1fr));
-      gap: 14px;
-      min-height: 0;
-    }
-
-    .service-card {
+    .services-flow {
+      position: relative;
       display: flex;
-      min-height: 0;
-      flex-direction: column;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(243, 239, 230, 0.04), transparent 34%),
-        var(--panel);
-      padding: 22px;
+      align-items: center;
+      gap: 22px;
+      padding: 90px 54px 70px;
+    }
+
+    .services-flow::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      left: 54px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), rgba(215, 255, 63, 0.12), transparent);
+      opacity: 0.55;
+    }
+
+    .services-flow::after {
+      content: "";
+      position: absolute;
+      top: calc(50% - 3px);
+      left: 54px;
+      width: 84px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 28px rgba(215, 255, 63, 0.38);
+      animation: service-pulse 5.8s ease-in-out infinite;
     }
 
     .service-number {
+      position: absolute;
+      right: 22px;
+      bottom: 6px;
+      z-index: 0;
+      color: rgba(243, 239, 230, 0.045);
+      font-family: var(--serif);
+      font-size: 158px;
+      line-height: 0.8;
+      pointer-events: none;
+    }
+
+    .service-panel {
+      position: relative;
+      display: grid;
+      width: 500px;
+      min-height: 620px;
+      grid-template-rows: auto auto 1fr;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(243, 239, 230, 0.048), transparent 28%),
+        #0d0f0d;
+      padding: 30px;
+      opacity: 0;
+      transform: translateY(42px) scale(0.985);
+      transition:
+        opacity 760ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 760ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 320ms ease,
+        background 320ms ease;
+    }
+
+    .service-panel.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .service-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, transparent 0 40px, rgba(243, 239, 230, 0.045) 40px 41px, transparent 41px),
+        linear-gradient(rgba(243, 239, 230, 0.032) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 54px;
+      opacity: 0.48;
+      transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-panel:hover {
+      border-color: rgba(215, 255, 63, 0.42);
+      background:
+        linear-gradient(180deg, rgba(215, 255, 63, 0.075), transparent 32%),
+        #101310;
+      transform: translateY(-8px) scale(1);
+    }
+
+    .service-panel:hover::before {
+      transform: translateX(9px);
+    }
+
+    .service-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-label {
       color: var(--accent);
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
     }
 
-    .service-card h3 {
-      margin-top: 34px;
+    .service-panel h3 {
+      max-width: 330px;
+      margin-top: 88px;
       font-family: var(--serif);
-      font-size: clamp(34px, 2.7vw, 48px);
+      font-size: 58px;
       font-weight: 400;
-      line-height: 0.96;
+      line-height: 0.92;
     }
 
-    .service-card ul {
-      display: grid;
+    .service-panel ul {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: end;
       gap: 10px;
-      margin-top: 28px;
+      margin-top: 36px;
       color: var(--soft);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.35;
       list-style: none;
     }
 
-    .service-card li {
-      position: relative;
-      padding-left: 18px;
+    .service-panel li {
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.026);
+      padding: 10px 13px;
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      text-transform: uppercase;
+      transition: border-color 260ms ease, color 260ms ease, transform 260ms ease;
     }
 
-    .service-card li::before {
-      content: "";
-      position: absolute;
-      top: 0.62em;
-      left: 0;
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
+    .service-panel li:nth-child(even) {
+      transform: translateY(12px);
+    }
+
+    .service-panel:hover li {
+      border-color: rgba(215, 255, 63, 0.28);
+      color: var(--fg);
     }
 
     .metrics {
@@ -1142,6 +1259,13 @@
       50% { opacity: 1; width: 68px; }
     }
 
+    @keyframes service-pulse {
+      0% { transform: translateX(0); opacity: 0.2; }
+      18% { opacity: 1; }
+      50% { transform: translateX(46vw); opacity: 0.72; }
+      100% { transform: translateX(96vw); opacity: 0; }
+    }
+
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.25; }
@@ -1225,23 +1349,65 @@
         padding: 80px 22px;
       }
 
-      .services-head {
-        display: block;
+      .services-intro {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        border-right: 0;
+        padding: 0;
       }
 
-      .services-head p:not(.kicker) {
+      .services-intro h2 {
+        font-size: 58px;
+      }
+
+      .services-intro p:not(.kicker) {
         margin-top: 24px;
       }
 
-      .service-grid {
-        display: grid;
-        gap: 16px;
-        margin-top: 34px;
-        grid-template-columns: 1fr;
+      .services-orbit {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .service-card {
+      .services-flow {
+        display: grid;
+        gap: 16px;
+        padding: 0;
+        margin-top: 34px;
+      }
+
+      .services-flow::before,
+      .services-flow::after {
+        display: none;
+      }
+
+      .service-panel {
+        width: 100%;
         min-height: auto;
+        padding: 24px;
+        opacity: 1;
+        transform: none;
+      }
+
+      .service-panel:hover {
+        transform: none;
+      }
+
+      .service-panel h3 {
+        margin-top: 48px;
+        font-size: 46px;
+      }
+
+      .service-panel ul {
+        align-content: start;
+      }
+
+      .service-panel li:nth-child(even) {
+        transform: none;
+      }
+
+      .service-number {
+        font-size: 118px;
       }
 
       .metrics {
@@ -1361,19 +1527,26 @@
     </section>
 
     <section class="section services-section" id="services">
-      <div class="services-head">
-        <div>
-          <p class="kicker">Services</p>
-          <h2>Senior help across the build arc.</h2>
-        </div>
+      <div class="services-intro">
+        <p class="kicker">Services</p>
+        <h2>Capabilities that move like one system.</h2>
         <p>
-          Focused enough for early ventures. Serious enough for established companies building AI, software, data, and digital platforms.
+          Strategy, product, engineering, data, cloud, and AI work are connected here as one build path, from sharp first proof to durable operating infrastructure.
         </p>
+        <div class="services-orbit" aria-label="Service operating modes">
+          <span>Discover</span>
+          <span>Design</span>
+          <span>Build</span>
+          <span>Automate</span>
+          <span>Integrate</span>
+          <span>Scale</span>
+        </div>
       </div>
-      <div class="service-grid">
-        <article class="service-card">
-          <span class="service-number">01</span>
+      <div class="services-flow" aria-label="FirstPrinciple service capabilities">
+        <article class="service-panel">
+          <span class="service-label">01 / Intelligence layer</span>
           <h3>AI Development</h3>
+          <span class="service-number">01</span>
           <ul>
             <li>AI Agents</li>
             <li>AI Chatbots</li>
@@ -1384,9 +1557,10 @@
             <li>AI Consulting</li>
           </ul>
         </article>
-        <article class="service-card">
-          <span class="service-number">02</span>
+        <article class="service-panel">
+          <span class="service-label">02 / Core systems</span>
           <h3>Software Development</h3>
+          <span class="service-number">02</span>
           <ul>
             <li>Custom Software Development</li>
             <li>SaaS Development</li>
@@ -1397,9 +1571,10 @@
             <li>Legacy System Modernization</li>
           </ul>
         </article>
-        <article class="service-card">
-          <span class="service-number">03</span>
+        <article class="service-panel">
+          <span class="service-label">03 / Product proof</span>
           <h3>Product Development</h3>
+          <span class="service-number">03</span>
           <ul>
             <li>MVP Development</li>
             <li>Product Strategy</li>
@@ -1410,9 +1585,10 @@
             <li>Fractional CTO</li>
           </ul>
         </article>
-        <article class="service-card">
-          <span class="service-number">04</span>
+        <article class="service-panel">
+          <span class="service-label">04 / Operating backbone</span>
           <h3>Data &amp; Cloud</h3>
+          <span class="service-number">04</span>
           <ul>
             <li>Data Engineering</li>
             <li>Business Intelligence &amp; Dashboards</li>
@@ -1423,9 +1599,10 @@
             <li>Cloud Migration</li>
           </ul>
         </article>
-        <article class="service-card">
-          <span class="service-number">05</span>
+        <article class="service-panel">
+          <span class="service-label">05 / User surfaces</span>
           <h3>Digital Experiences</h3>
+          <span class="service-number">05</span>
           <ul>
             <li>Web Application Development</li>
             <li>Mobile App Development</li>
@@ -1797,6 +1974,7 @@
     const shell = document.getElementById("shell");
     const thumb = document.getElementById("thumb");
     const cards = document.querySelectorAll(".card");
+    const servicePanels = document.querySelectorAll(".service-panel");
     const jumps = document.querySelectorAll("[data-jump]");
     const drawer = document.getElementById("caseDrawer");
     const drawerMeta = document.getElementById("drawerMeta");
@@ -1826,6 +2004,18 @@
         const rect = card.getBoundingClientRect();
         if (rect.left < window.innerWidth * 0.88 && rect.right > 0) {
           window.setTimeout(() => card.classList.add("visible"), index * 90);
+        }
+      });
+    }
+
+    function revealServicePanels() {
+      servicePanels.forEach((panel, index) => {
+        const rect = panel.getBoundingClientRect();
+        const entersHorizontalView = rect.left < window.innerWidth * 0.9 && rect.right > 0;
+        const entersVerticalView = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+
+        if (entersHorizontalView && entersVerticalView) {
+          window.setTimeout(() => panel.classList.add("visible"), index * 120);
         }
       });
     }
@@ -1936,6 +2126,7 @@
       }
 
       revealCards();
+      revealServicePanels();
       requestAnimationFrame(animate);
     }
 
