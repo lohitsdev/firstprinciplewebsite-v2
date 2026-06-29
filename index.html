@@ -387,6 +387,103 @@
       line-height: 1.65;
     }
 
+    .services-section {
+      display: grid;
+      width: min(1560px, 132vw);
+      grid-template-rows: auto 1fr;
+      gap: 34px;
+      align-content: center;
+      border-left: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(215, 255, 63, 0.035), transparent 38%),
+        #0b0d0b;
+      padding: 112px 48px 66px;
+    }
+
+    .services-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .services-head h2 {
+      max-width: 740px;
+      font-family: var(--serif);
+      font-size: clamp(50px, 5.4vw, 88px);
+      font-weight: 400;
+      line-height: 0.96;
+    }
+
+    .services-head p:not(.kicker) {
+      max-width: 430px;
+      color: var(--soft);
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(220px, 1fr));
+      gap: 14px;
+      min-height: 0;
+    }
+
+    .service-card {
+      display: flex;
+      min-height: 0;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(243, 239, 230, 0.04), transparent 34%),
+        var(--panel);
+      padding: 22px;
+    }
+
+    .service-number {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+    }
+
+    .service-card h3 {
+      margin-top: 34px;
+      font-family: var(--serif);
+      font-size: clamp(34px, 2.7vw, 48px);
+      font-weight: 400;
+      line-height: 0.96;
+    }
+
+    .service-card ul {
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+      color: var(--soft);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.35;
+      list-style: none;
+    }
+
+    .service-card li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .service-card li::before {
+      content: "";
+      position: absolute;
+      top: 0.62em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
     .metrics {
       display: grid;
       width: 780px;
@@ -1108,6 +1205,7 @@
       }
 
       .wide-text,
+      .services-section,
       .metrics,
       .method,
       .method-intro,
@@ -1121,6 +1219,29 @@
 
       .wide-text {
         padding: 80px 22px;
+      }
+
+      .services-section {
+        padding: 80px 22px;
+      }
+
+      .services-head {
+        display: block;
+      }
+
+      .services-head p:not(.kicker) {
+        margin-top: 24px;
+      }
+
+      .service-grid {
+        display: grid;
+        gap: 16px;
+        margin-top: 34px;
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: auto;
       }
 
       .metrics {
@@ -1187,6 +1308,7 @@
     <a class="brand" href="#home">first<span>principle</span></a>
     <ul class="nav-links">
       <li><a href="#studio">Studio</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#method">Method</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -1227,6 +1349,94 @@
       <p>
         We combine strategy, product formation, MVP development, and growth systems for founders and established teams creating new ventures. The work is lean, senior, and built around commercial truth.
       </p>
+    </section>
+
+    <section class="section divider" aria-label="Services divider">
+      <div class="divider-inner">
+        <div class="divider-label">Services</div>
+        <div class="divider-line"></div>
+        <div class="divider-count">05</div>
+        <div class="eyebrow">Capabilities</div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="services">
+      <div class="services-head">
+        <div>
+          <p class="kicker">Services</p>
+          <h2>Senior help across the build arc.</h2>
+        </div>
+        <p>
+          Focused enough for early ventures. Serious enough for established companies building AI, software, data, and digital platforms.
+        </p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card">
+          <span class="service-number">01</span>
+          <h3>AI Development</h3>
+          <ul>
+            <li>AI Agents</li>
+            <li>AI Chatbots</li>
+            <li>AI Workflow Automation</li>
+            <li>Enterprise AI Solutions</li>
+            <li>Voice AI</li>
+            <li>RAG &amp; Knowledge Systems</li>
+            <li>AI Consulting</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <span class="service-number">02</span>
+          <h3>Software Development</h3>
+          <ul>
+            <li>Custom Software Development</li>
+            <li>SaaS Development</li>
+            <li>Enterprise Software</li>
+            <li>Internal Business Tools</li>
+            <li>CRM &amp; ERP Development</li>
+            <li>API Development &amp; Integration</li>
+            <li>Legacy System Modernization</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <span class="service-number">03</span>
+          <h3>Product Development</h3>
+          <ul>
+            <li>MVP Development</li>
+            <li>Product Strategy</li>
+            <li>UI/UX Design</li>
+            <li>Product Discovery Workshops</li>
+            <li>Rapid Prototyping</li>
+            <li>Product Scaling</li>
+            <li>Fractional CTO</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <span class="service-number">04</span>
+          <h3>Data &amp; Cloud</h3>
+          <ul>
+            <li>Data Engineering</li>
+            <li>Business Intelligence &amp; Dashboards</li>
+            <li>Data Warehousing</li>
+            <li>Cloud Infrastructure</li>
+            <li>DevOps &amp; CI/CD</li>
+            <li>System Integrations</li>
+            <li>Cloud Migration</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <span class="service-number">05</span>
+          <h3>Digital Experiences</h3>
+          <ul>
+            <li>Web Application Development</li>
+            <li>Mobile App Development</li>
+            <li>E-commerce Development</li>
+            <li>Customer Portals</li>
+            <li>Admin Dashboards</li>
+            <li>Marketplace Platforms</li>
+            <li>Maintenance &amp; Support</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
     <section class="section metrics" aria-label="FirstPrinciple metrics">
