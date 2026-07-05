@@ -1003,6 +1003,58 @@
       line-height: 1.7;
     }
 
+    .operator {
+      display: flex;
+      width: 760px;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(215, 255, 63, 0.045), transparent 38%),
+        #0c0f0c;
+      padding: 86px 62px;
+    }
+
+    .operator h2 {
+      margin-top: 24px;
+      font-family: var(--serif);
+      font-size: 76px;
+      font-weight: 400;
+      line-height: 0.94;
+    }
+
+    .operator p:not(.kicker) {
+      max-width: 560px;
+      margin-top: 26px;
+      color: var(--soft);
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .operator-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 38px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .operator-list span {
+      min-height: 74px;
+      display: flex;
+      align-items: end;
+      background: rgba(255, 255, 255, 0.026);
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      line-height: 1.45;
+      padding: 16px;
+      text-transform: uppercase;
+    }
+
     .email {
       display: inline-block;
       margin-top: 34px;
@@ -1320,6 +1372,8 @@
       .method-intro,
       .method-steps,
       .method-output,
+      .operator,
+      .legal,
       .end {
         display: block;
         width: 100%;
@@ -1437,6 +1491,18 @@
         font-size: 54px;
       }
 
+      .operator {
+        padding: 80px 22px;
+      }
+
+      .operator h2 {
+        font-size: 54px;
+      }
+
+      .operator-list {
+        grid-template-columns: 1fr;
+      }
+
       .step {
         min-height: 260px;
         border-right: 0;
@@ -1446,6 +1512,11 @@
       .end {
         min-height: 86vh;
         padding: 90px 22px;
+      }
+
+      .legal {
+        border-left: 0;
+        padding: 70px 22px;
       }
     }
   </style>
@@ -1663,7 +1734,7 @@
       <div class="divider-inner">
         <div class="divider-label">Projects</div>
         <div class="divider-line"></div>
-        <div class="divider-count">13</div>
+        <div class="divider-count">11</div>
         <div class="eyebrow">Systems</div>
       </div>
     </section>
@@ -1766,24 +1837,8 @@
         </div>
         <span class="card-action">Open case file</span>
       </article>
-      <article class="card" data-index="07" data-url="https://apps.apple.com/us/app/politorium/id6740051311" role="button" tabindex="0">
+      <article class="card" data-index="07" data-url="https://apps.apple.com/us/app/carbon-smart-diet-coach/id1437820611" role="button" tabindex="0">
         <div class="card-top"><span>07</span><span class="status">Live System</span></div>
-        <div class="card-body">
-          <p class="category">Civic Data / Engagement</p>
-          <h3>POLITORIUM</h3>
-          <p>US political discourse and engagement platform for respectful debate, political news sharing, local civic conversations, and reputation-based community participation.</p>
-          <ul class="impact-list">
-            <li>Created a calmer alternative to chaotic political discussion on mainstream social platforms</li>
-            <li>Supported civil debate, diverse perspectives, and informed political discussion</li>
-            <li>Used reputation mechanics to reward thoughtful and respectful engagement</li>
-            <li>Helped users connect national issues with local leaders and community impact</li>
-          </ul>
-          <div class="stack"><span>React Native</span><span>GraphQL</span><span>AWS</span></div>
-        </div>
-        <span class="card-action">Open case file</span>
-      </article>
-      <article class="card" data-index="08" data-url="https://apps.apple.com/us/app/carbon-smart-diet-coach/id1437820611" role="button" tabindex="0">
-        <div class="card-top"><span>08</span><span class="status">Live System</span></div>
         <div class="card-body">
           <p class="category">Nutrition / Metabolic Tracking</p>
           <h3>CARBON</h3>
@@ -1799,8 +1854,8 @@
         </div>
         <span class="card-action">Open case file</span>
       </article>
-      <article class="card" data-index="09" role="button" tabindex="0">
-        <div class="card-top"><span>09</span><span class="status">Live System</span></div>
+      <article class="card" data-index="08" role="button" tabindex="0">
+        <div class="card-top"><span>08</span><span class="status">Live System</span></div>
         <div class="card-body">
           <p class="category">Dental Automation / Clinics</p>
           <h3>DENTAL OPS</h3>
@@ -1815,8 +1870,8 @@
         </div>
         <span class="card-action">Open case file</span>
       </article>
-      <article class="card" data-index="10" data-url="https://www.diamondbraces.com/" role="button" tabindex="0">
-        <div class="card-top"><span>10</span><span class="status">Beta</span></div>
+      <article class="card" data-index="09" data-url="https://www.diamondbraces.com/" role="button" tabindex="0">
+        <div class="card-top"><span>09</span><span class="status">Beta</span></div>
         <div class="card-body">
           <p class="category">Healthcare / Dental Insurance</p>
           <h3>DIAMOND BRACES</h3>
@@ -1831,24 +1886,30 @@
         </div>
         <span class="card-action">Open case file</span>
       </article>
-      <article class="card" data-index="11" role="button" tabindex="0">
-        <div class="card-top"><span>11</span><span class="status">Beta</span></div>
+      <article class="card" data-index="10" role="button" tabindex="0">
+        <div class="card-top"><span>10</span><span class="status">Internal System</span></div>
         <div class="card-body">
-          <p class="category">Creator Tools / Niche Communities</p>
-          <h3>HOBBYIST</h3>
-          <p>A focused product system for specialist hobby communities, built around lightweight publishing, discovery, interest-led engagement, and community participation.</p>
+          <p class="category">Healthcare / Patient Operations System</p>
+          <h3>ORTHOFLOW CRM - DB</h3>
+          <p>Custom patient intake and workflow management platform built to replace Diamond Braces' HubSpot-based intake operations with one operating system for onboarding, insurance verification, lead management, SMS communication, and internal workflows.</p>
           <ul class="impact-list">
-            <li>Helped hobby communities organize posts, projects, events, and discussion in one place</li>
-            <li>Supported discovery for people with shared interests instead of generic social feeds</li>
-            <li>Created space for creators to showcase work, exchange ideas, and grow participation</li>
-            <li>Designed for niche community depth rather than broad social-media noise</li>
+            <li>Replaced HubSpot with a purpose-built CRM tailored for orthodontic patient intake workflows</li>
+            <li>Centralized patient records, responsible parties, insurance details, intake progress, treatment status, doctor review flags, and communication history</li>
+            <li>Built a dynamic form builder for Virtual Consultation, Insurance Check, Get a Quote, custom workflows, conditional logic, and document uploads</li>
+            <li>Created a unified patient workspace for documents, clinical photos, notes, tasks, activity history, ownership, and follow-up scheduling</li>
+            <li>Integrated Twilio for two-way SMS, MMS, conversation history, automatic patient linking, and STOP/HELP compliance handling</li>
+            <li>Automated lead creation, patient onboarding, intake routing, queue management, reminders, and missing-information detection</li>
+            <li>Designed work queues for new intakes, overdue follow-ups, insurance verification, missing documents, scheduling readiness, and completed cases</li>
+            <li>Built dashboards for intake performance, workload distribution, lead conversion, follow-up compliance, queue health, and closed/lost analysis</li>
+            <li>Integrated Microsoft SSO with role-based permissions for administrators, intake managers, and intake coordinators</li>
+            <li>Migrated HubSpot contacts, leads, and workflow data while preserving business continuity</li>
           </ul>
-          <div class="stack"><span>Product Strategy</span><span>Community</span><span>MVP</span></div>
+          <div class="stack"><span>CRM</span><span>Patient Intake</span><span>Dynamic Forms</span><span>Twilio</span><span>Microsoft SSO</span><span>RBAC</span><span>HubSpot Migration</span><span>Workflow Automation</span><span>Dashboards</span></div>
         </div>
         <span class="card-action">Open case file</span>
       </article>
-      <article class="card" data-index="12" data-url="https://www.arvoai.app/" role="button" tabindex="0">
-        <div class="card-top"><span>12</span><span class="status">Live System</span></div>
+      <article class="card" data-index="11" data-url="https://www.arvoai.app/" role="button" tabindex="0">
+        <div class="card-top"><span>11</span><span class="status">Live System</span></div>
         <div class="card-body">
           <p class="category">AI Communication Coach</p>
           <h3>ARVO AI</h3>
@@ -1860,22 +1921,6 @@
             <li>Designed for Indian users preparing for interviews, exams, and high-stakes conversations</li>
           </ul>
           <div class="stack"><span>AI Coaching</span><span>Voice Analysis</span><span>Hume AI</span><span>Mobile App</span></div>
-        </div>
-        <span class="card-action">Open case file</span>
-      </article>
-      <article class="card" data-index="13" role="button" tabindex="0">
-        <div class="card-top"><span>13</span><span class="status">Beta</span></div>
-        <div class="card-body">
-          <p class="category">Education / Exam Preparation</p>
-          <h3>TNPSC PREP</h3>
-          <p>Exam preparation app for students preparing for Tamil Nadu Public Service Commission exams, focused on structured learning, practice, and progress tracking.</p>
-          <ul class="impact-list">
-            <li>Organized TNPSC preparation into clear subjects, topics, and study paths</li>
-            <li>Supported mock tests, question practice, and exam-style revision workflows</li>
-            <li>Helped students identify weak areas through progress and performance tracking</li>
-            <li>Designed for repeatable daily preparation across Group exams and state-service aspirants</li>
-          </ul>
-          <div class="stack"><span>Exam Prep</span><span>Practice Tests</span><span>Progress Tracking</span><span>Mobile Learning</span></div>
         </div>
         <span class="card-action">Open case file</span>
       </article>
@@ -1965,6 +2010,24 @@
       </div>
     </section>
 
+    <section class="section operator" aria-label="Founder and operator experience">
+      <div>
+        <p class="kicker">Operator-led</p>
+        <h2>Built by people who understand the work after launch.</h2>
+        <p>
+          FirstPrinciple is led by operators who have built products, automation systems, and venture infrastructure across healthcare, commerce, AI, and enterprise software.
+        </p>
+        <div class="operator-list" aria-label="FirstPrinciple operating experience">
+          <span>Healthcare workflow systems</span>
+          <span>AI and automation builds</span>
+          <span>Internal CRMs and business tools</span>
+          <span>Data, search, and intelligence platforms</span>
+          <span>MVP to scalable product systems</span>
+          <span>Founder and operator support</span>
+        </div>
+      </div>
+    </section>
+
     <section class="section end" id="contact">
       <div>
         <p class="kicker">Contact</p>
@@ -1982,7 +2045,7 @@
           FirstPrinciple is a venture studio. Project summaries on this site are presented as portfolio and case-study descriptions; confidential implementation details, client data, and private operating metrics are intentionally omitted.
         </p>
         <p>
-          Replace this section with final company registration, privacy policy, terms, address, and legal entity information before production launch.
+          For project inquiries, partnership conversations, or legal requests, contact the studio directly using the channels below.
         </p>
         <div class="legal-links">
           <a href="mailto:lohit@firstprinciple.company">lohit@firstprinciple.company</a>
