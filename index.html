@@ -635,6 +635,97 @@
       text-transform: uppercase;
     }
 
+    .products-section {
+      display: grid;
+      width: max(100vw, 1100px);
+      grid-template-columns: 330px minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(40px, 5vw, 80px);
+      padding: 100px clamp(28px, 4vw, 64px) 72px;
+      border-inline: 1px solid var(--line);
+      background: radial-gradient(ellipse at 15% 65%, var(--accent-soft), transparent 55%), #0d0f0d;
+    }
+
+    .products-intro h2 {
+      margin-top: 28px;
+      font-family: var(--serif);
+      font-size: clamp(66px, 6vw, 94px);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+    }
+
+    .products-intro h2 em { color: var(--accent); font-weight: 400; }
+    .products-intro > p:not(.kicker) {
+      margin-top: 24px;
+      color: var(--soft);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 370px;
+    }
+
+    .product-signature {
+      display: block;
+      margin-top: 26px;
+      border-top: 1px solid var(--line-strong);
+      padding-top: 18px;
+      color: var(--muted);
+      font: 10px var(--mono);
+      line-height: 1.8;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .products-intro .product-link { margin-top: 26px; }
+    .product-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--accent);
+      font: 10px var(--mono);
+      line-height: 1.7;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .product-link::after { content: "↗"; font-size: 16px; }
+    .product-link:hover { color: var(--fg); }
+    .product-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+
+    .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .product-panel {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 26px;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(145deg, rgba(243, 239, 230, 0.035), transparent);
+      transition: border-color 240ms ease;
+    }
+    .product-panel:hover { border-color: rgba(215, 255, 63, 0.4); }
+    .product-panel .category { margin: 0; font-size: 9px; }
+    .product-panel h3 { margin-top: 18px; font: 400 36px/1.05 var(--serif); }
+    .product-panel > p:not(.category) { margin: 16px 0 22px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .product-panel .product-link { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+
+    @media (max-height: 740px) and (min-width: 901px) {
+      .products-section { padding-top: 84px; padding-bottom: 48px; }
+      .product-panel { padding: 20px; }
+      .product-panel h3 { margin-top: 12px; font-size: 32px; }
+      .product-panel > p:not(.category) { margin: 12px 0 14px; }
+    }
+
+    @media (max-width: 900px) {
+      .products-section { display: block; width: 100%; padding: 80px 22px; border-inline: 0; border-block: 1px solid var(--line); }
+      .products-intro h2 { font-size: clamp(58px, 12vw, 82px); overflow-wrap: anywhere; }
+      .products-intro > p:not(.kicker) { max-width: 580px; }
+      .product-grid { margin-top: 40px; }
+      .product-panel { padding: 24px; }
+    }
+    @media (max-width: 580px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .product-panel h3 { font-size: 36px; }
+    }
+
     .cards {
       display: flex;
       height: 100vh;
@@ -1527,6 +1618,7 @@
     <ul class="nav-links">
       <li><a href="#studio">Studio</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#method">Method</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -1727,6 +1819,42 @@
       <div class="metric">
         <strong>Scale</strong>
         <span>Operating loops for what comes next</span>
+      </div>
+    </section>
+
+    <section class="section products-section" id="products" aria-labelledby="products-title">
+      <div class="products-intro">
+        <p class="kicker">Our products / Building automation</p>
+        <h2 id="products-title">BACnScope.<br><em>Clarity on site.</em></h2>
+        <p>One product family for the people who keep buildings running. Discover BACnet networks, inspect controllers, and turn meter data into a clearer view of consumption.</p>
+        <span class="product-signature">Built by FirstPrinciple<br>Windows workspace / Android field tools</span>
+        <a class="product-link" href="https://bacnscope.com/" target="_blank" rel="noopener noreferrer">Explore BACnScope</a>
+      </div>
+      <div class="product-grid">
+        <article class="product-panel">
+          <p class="category">01 / Windows workspace</p>
+          <h3>BACnScope Web</h3>
+          <p>A persistent BACnet engineering workspace. Discover controllers, inspect point values and status, and review recorded trends and history.</p>
+          <a class="product-link" href="https://bacnscope.com/#web-features" target="_blank" rel="noopener noreferrer">Explore the workspace</a>
+        </article>
+        <article class="product-panel">
+          <p class="category">02 / Standalone Android app</p>
+          <h3>BACnScope Mobile</h3>
+          <p>Direct BACnet tools for commissioning on site. Discover devices, browse objects, refresh live values, and command supported points when site access permits.</p>
+          <a class="product-link" href="https://play.google.com/store/apps/details?id=company.firstprinciple.bacscope&amp;hl=en" target="_blank" rel="noopener noreferrer">View on Google Play</a>
+        </article>
+        <article class="product-panel">
+          <p class="category">03 / Metering within BACnScope</p>
+          <h3>BACnBill</h3>
+          <p>Map electricity, water, gas, and thermal meters. Record selected points, compare consumption, reconcile meters, and prepare tenant utility statements.</p>
+          <a class="product-link" href="https://bacnscope.com/#web-features" target="_blank" rel="noopener noreferrer">Explore utility metering</a>
+        </article>
+        <article class="product-panel">
+          <p class="category">04 / Connected Android companion</p>
+          <h3>BACnMobile</h3>
+          <p>A read-only view of your Windows workspace on the same trusted LAN. Pair by QR code to review saved controllers, point snapshots, and BACnBill meter totals.</p>
+          <a class="product-link" href="https://bacnscope.com/#bacnmobile-features" target="_blank" rel="noopener noreferrer">Explore connected mobile</a>
+        </article>
       </div>
     </section>
 
@@ -2223,6 +2351,8 @@
 
     function animate() {
       if (!isMobile()) {
+        // Native fragment scrolling must not add a second horizontal offset.
+        if (window.scrollX !== 0) window.scrollTo({ left: 0, top: 0, behavior: "instant" });
         currentX += (targetX - currentX) * ease;
         shell.style.transform = `translate3d(${-currentX}px, 0, 0)`;
 
@@ -2244,6 +2374,12 @@
     window.addEventListener("resize", () => {
       targetX = clampScroll(targetX);
       currentX = clampScroll(currentX);
+    });
+
+    window.addEventListener("load", () => {
+      if (isMobile()) return;
+      const section = document.getElementById(window.location.hash.slice(1));
+      if (section) currentX = targetX = clampScroll(section.offsetLeft);
     });
 
     animate();
