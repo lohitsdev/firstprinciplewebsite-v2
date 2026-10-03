@@ -563,6 +563,16 @@
       list-style: none;
     }
 
+    .service-panel.service-specialty h3 {
+      max-width: none;
+      margin-top: 32px;
+      font-size: 50px;
+    }
+
+    .service-specialty .service-number {
+      position: absolute;
+    }
+
     .service-panel li {
       display: grid;
       grid-template-columns: 48px 1fr;
@@ -1664,7 +1674,7 @@
       <div class="divider-inner">
         <div class="divider-label">Services</div>
         <div class="divider-line"></div>
-        <div class="divider-count">05</div>
+        <div class="divider-count">07</div>
         <div class="eyebrow">Capabilities</div>
       </div>
     </section>
@@ -1674,7 +1684,7 @@
         <p class="kicker">Services</p>
         <h2>Capabilities that move like one system.</h2>
         <p>
-          Strategy, product, engineering, data, cloud, and AI work are connected here as one build path, from sharp first proof to durable operating infrastructure.
+          From software and AI to building automation and BMS graphics, we connect engineering with the systems that keep businesses and buildings running.
         </p>
         <div class="services-orbit" aria-label="Service operating modes">
           <span>
@@ -1798,6 +1808,34 @@
             <li>Admin Dashboards</li>
             <li>Marketplace Platforms</li>
             <li>Maintenance &amp; Support</li>
+          </ul>
+        </article>
+        <article class="service-panel service-specialty" id="building-automation">
+          <span class="service-label">06 / Building &amp; industrial controls</span>
+          <h3>Building Automation &amp; Controls</h3>
+          <span class="service-number">06</span>
+          <ul>
+            <li>Building Management Systems (BMS)</li>
+            <li>Siemens, Honeywell &amp; Trend Systems</li>
+            <li>HVAC Controls &amp; Control Sequences</li>
+            <li>PLC Programming &amp; Integration</li>
+            <li>SCADA &amp; HMI Development</li>
+            <li>BACnet &amp; Modbus Integration</li>
+            <li>Commissioning &amp; Troubleshooting</li>
+          </ul>
+        </article>
+        <article class="service-panel service-specialty" id="bms-graphics">
+          <span class="service-label">07 / Operator interfaces</span>
+          <h3>BMS Graphics &amp; Visualization</h3>
+          <span class="service-number">07</span>
+          <ul>
+            <li>Siemens Desigo CC Graphics</li>
+            <li>Niagara Graphics &amp; Dashboards</li>
+            <li>HVAC Plant &amp; Equipment Graphics</li>
+            <li>Floor Plans &amp; System Navigation</li>
+            <li>Live Point Binding &amp; Status Displays</li>
+            <li>Alarm &amp; Trend Visualization</li>
+            <li>Operator Interface Design</li>
           </ul>
         </article>
       </div>
@@ -2235,7 +2273,7 @@
 
     function sectionOffset(id) {
       const section = document.getElementById(id);
-      return section ? section.offsetLeft : 0;
+      return section ? section.getBoundingClientRect().left + currentX + window.scrollX : 0;
     }
 
     function revealCards() {
@@ -2352,7 +2390,7 @@
     function animate() {
       if (!isMobile()) {
         // Native fragment scrolling must not add a second horizontal offset.
-        if (window.scrollX !== 0) window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+        if (window.scrollX !== 0 || window.scrollY !== 0) window.scrollTo({ left: 0, top: 0, behavior: "instant" });
         currentX += (targetX - currentX) * ease;
         shell.style.transform = `translate3d(${-currentX}px, 0, 0)`;
 
@@ -2379,7 +2417,7 @@
     window.addEventListener("load", () => {
       if (isMobile()) return;
       const section = document.getElementById(window.location.hash.slice(1));
-      if (section) currentX = targetX = clampScroll(section.offsetLeft);
+      if (section) currentX = targetX = clampScroll(sectionOffset(section.id));
     });
 
     animate();
